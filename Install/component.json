@@ -1,0 +1,71 @@
+{
+	"name" : "MFAmcs",
+	"route" : "mf/amcs",
+	"description" : "<p>Mutual Fund amcs component</p>",
+	"module_type" : "components",
+	"app_type" : "fintech",
+	"category" : "mutualfunds",
+	"version" : "0.0.0",
+	"repo" : "https://github.com/sp-fintech/fintech-components-mutualfunds-mfamcs",
+	"class" : "Apps\\Fintech\\Components\\Mf\\Amcs\\AmcsComponent",
+	"dependencies" : 
+	{
+		"core" : 
+		{
+			"name" : "Core",
+			"version" : "0.0.0-rc.11",
+			"repo" : "https://github.com/sp-framework/core"
+		},
+		"apptype" : 
+		{
+			"name" : "Fintech",
+			"version" : "0.3.0",
+			"repo" : "https://github.com/sp-fintech/fintech"
+		},
+		"packages" : 
+		[
+			{
+				"name" : "MfAmcs",
+				"version" : "0.2.0",
+				"repo" : "https://github.com/sp-fintech/fintech-packages-mutualfunds-mfamcs"
+			}
+		],
+		"middlewares" : [],
+		"views" : [],
+		"externals" : 
+		{
+			"composer" : 
+			{
+				"require" : []
+			},
+			"config" : 
+			{
+				"allow-plugins" : []
+			},
+			"extra" : 
+			{
+				"patches" : []
+			}
+		}
+	},
+	"menu" : 
+	{
+		"mf" : 
+		{
+			"title" : "mf",
+			"icon" : "file-invoice-dollar",
+			"childs" : 
+			{
+				"amcs" : 
+				{
+					"title" : "amcs",
+					"icon" : "circle-dot",
+					"link" : "mf/amcs"
+				}
+			}
+		},
+		"seq" : "0"
+	},
+	"settings" : [],
+	"widgets" : []
+}
