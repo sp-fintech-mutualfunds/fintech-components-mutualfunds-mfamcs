@@ -1,12 +1,12 @@
 {
-	"name" : "MFAmcs",
+	"name" : "Mutual Fund Amcs",
 	"route" : "mf/amcs",
-	"description" : "<p>Mutual Fund amcs component</p>",
+	"description" : "<p>Mutual Fund Amcs</p>",
 	"module_type" : "components",
 	"app_type" : "fintech",
 	"category" : "mutualfunds",
 	"version" : "0.0.0",
-	"repo" : "https://github.com/sp-fintech/fintech-components-mutualfunds-mfamcs",
+	"repo" : "https://github.com/sp-fintech-mutualfunds/fintech-components-mutualfunds-mfamcs",
 	"class" : "Apps\\Fintech\\Components\\Mf\\Amcs\\AmcsComponent",
 	"dependencies" : 
 	{
