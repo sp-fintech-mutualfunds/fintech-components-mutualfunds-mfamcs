@@ -26,8 +26,8 @@
 		[
 			{
 				"name" : "MfAmcs",
-				"version" : "0.2.0",
-				"repo" : "https://github.com/sp-fintech/fintech-packages-mutualfunds-mfamcs"
+				"version" : "0.3.0",
+				"repo" : "https://github.com/sp-fintech-mutualfunds/fintech-packages-mutualfunds-mfamcs"
 			}
 		],
 		"middlewares" : [],
