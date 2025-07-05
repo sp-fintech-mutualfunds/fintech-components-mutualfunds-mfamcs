@@ -37,6 +37,7 @@ class AmcsComponent extends BaseComponent
 
             return;
         }
+
         $controlActions =
             [
                 // 'disableActionsForIds'  => [1],
@@ -47,20 +48,47 @@ class AmcsComponent extends BaseComponent
                 ]
             ];
 
+        $replaceColumns =
+            function ($dataArr) {
+                if ($dataArr && is_array($dataArr) && count($dataArr) > 0) {
+                    return $this->replaceColumns($dataArr);
+                }
+
+                return $dataArr;
+            };
+
         $this->generateDTContent(
             $this->amcsPackage,
             'mf/amcs/view',
             null,
-            ['name', 'phone_number', 'website', 'contact_email'],
+            ['name', 'phone_number', 'contact_email', 'turn_around_time'],
             true,
-            ['name', 'phone_number', 'website', 'contact_email'],
+            ['name', 'phone_number', 'contact_email', 'turn_around_time'],
             $controlActions,
-            null,
-            null,
+            ['turn_around_time' => 'Turn Around Time (Days)'],
+            $replaceColumns,
             'name'
         );
 
         $this->view->pick('amcs/list');
+    }
+
+    protected function replaceColumns($dataArr)
+    {
+        foreach ($dataArr as $dataKey => &$data) {
+            $data = $this->formatTurnAroundTime($dataKey, $data);
+        }
+
+        return $dataArr;
+    }
+
+    protected function formatTurnAroundTime($rowId, $data)
+    {
+        if (!isset($data['turn_around_time'])) {
+            $data['turn_around_time'] = '-';
+        }
+
+        return $data;
     }
 
     /**
@@ -68,14 +96,7 @@ class AmcsComponent extends BaseComponent
      */
     public function addAction()
     {
-        $this->requestIsPost();
-
-        //$this->package->add{?}($this->postData());
-
-        $this->addResponse(
-            $this->package->packagesData->responseMessage,
-            $this->package->packagesData->responseCode
-        );
+        //
     }
 
     /**
@@ -85,11 +106,11 @@ class AmcsComponent extends BaseComponent
     {
         $this->requestIsPost();
 
-        //$this->package->update{?}($this->postData());
+        $this->amcsPackage->updateMfAmcs($this->postData());
 
         $this->addResponse(
-            $this->package->packagesData->responseMessage,
-            $this->package->packagesData->responseCode
+            $this->amcsPackage->packagesData->responseMessage,
+            $this->amcsPackage->packagesData->responseCode
         );
     }
 
@@ -98,13 +119,6 @@ class AmcsComponent extends BaseComponent
      */
     public function removeAction()
     {
-        $this->requestIsPost();
-
-        //$this->package->remove{?}($this->postData());
-
-        $this->addResponse(
-            $this->package->packagesData->responseMessage,
-            $this->package->packagesData->responseCode
-        );
+        //
     }
 }
